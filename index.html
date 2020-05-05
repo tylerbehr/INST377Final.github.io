@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>377Draft</title>
     <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.css" />
@@ -15,29 +18,15 @@
     <link crossorigin="" href="lib/leaflet/leaflet.css"rel="stylesheet" />
     <script src="lib/leaflet/leaflet.js"></script>
     <script src="lib/Leaflet.SmoothMarkerBouncing/leaflet.smoothmarkerbouncing.js"></script>
-    <script src="../src/L.Control.Sidebar.js"></script>
+
 <style> 
     #map { height: 700px; width: 1000px }
-
-    .info {
-    padding: 6px 8px;
-    font: 14px/16px Arial, Helvetica, sans-serif;
-    background: white;
-    background: rgba(255,255,255,0.8);
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-radius: 5px;
-    }
-    
-    .info h4 {
-    margin: 0 0 5px;
-    color: #777;
-    }
-
 </style>
 
 </head>
 
 <body>
+
     <div class="teamName"></div>
     <div class="aboutUS"></div>
     <div class="mapTitle"></div>
@@ -45,6 +34,10 @@
     <div class="list"><b>List of Polling Places</b></div>
 
 <script>
+
+
+// Fetch the JSON data of the polling plaves to make make an ordered list
+// Code ref: Lab 5 INST 377 Spring 2020
 fetch('https://data.princegeorgescountymd.gov/resource/2v6d-7p4w.json')
 .then((response) => response.json())
 .then((data) => {
@@ -62,7 +55,11 @@ fetch('https://data.princegeorgescountymd.gov/resource/2v6d-7p4w.json')
 }
 })
 
+
+// Initializing the base map layer 
+// code ref: Lab 7 INST 377 Spring 2020
 var mymap = L.map('map').setView([38.988136,-76.941567], 10);
+
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
@@ -73,14 +70,21 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 
+// Loading external PG county polygons from GeoJson data to distinguish the county from the rest of the map
+// code ref: https://medium.com/@maptastik/loading-external-geojson-a-nother-way-to-do-it-with-jquery-c72ae3b41c01
+// GeoJson ref: https://data.princegeorgescountymd.gov/Government/Map-Of-Polling-Places-In-Election-Precincts/avc3-7kzn
 var districts = new L.GeoJSON.AJAX("districts.geojson");
 districts.on('data:loaded', function(){
 districts.addTo(mymap);
 });
 
 
+// Loading external PG County polling place GeoJson data for markers, styling the markers and adding relevant information in the popups. 
+// code ref: https://maptimeboston.github.io/leaflet-intro/
+// GeoJson ref: https://data.princegeorgescountymd.gov/Government/Polling-Places/e2wd-vu2n#Download
 $.getJSON("pg.geojson",function(data){
     var locationIcon = L.icon({
+      // Icon used from webstockreview.net
       iconUrl: 'https://webstockreview.net/images/election-clipart-officer-15.png',
       iconSize: [30,25]
     });
@@ -89,24 +93,22 @@ $.getJSON("pg.geojson",function(data){
         var marker = L.marker(latlng,{icon: locationIcon});
         //console.log(feature.properties);
         marker.bindPopup('<b>' + feature.properties.name +'</b>' + '<br/>' + '<b>Address: </b>' + feature.properties.address +
+        // Hyperlinking the address of each marker to Google Maps 
         '</br><b><a href="https://www.google.com/maps/place/' + feature.properties.address + '">Click For Directions</a></b>');
         return marker;
       }
     }).addTo(mymap);
   });
 
+
+// Adding a Fullscreen control button
+// code ref: https://github.com/Leaflet/Leaflet.fullscreen
 mymap.addControl(new L.Control.Fullscreen({
     title: {
         'false': 'View Fullscreen',
         'true': 'Exit Fullscreen'
     }
 }));
-
-
-
-
-
-
 
 </script>
 
