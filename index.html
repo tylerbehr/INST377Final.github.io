@@ -5,7 +5,9 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>377Draft</title>
+    <title>377 Group 1 Project Spring 2020</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.css" />
     <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -19,19 +21,100 @@
     <script src="lib/leaflet/leaflet.js"></script>
     <script src="lib/Leaflet.SmoothMarkerBouncing/leaflet.smoothmarkerbouncing.js"></script>
 
-<style> 
+<style>
+    body {
+      background-color: #D1DCA8;
+      font-family: 'Bebas Neue', cursive;
+    }
+
+
+
     #map { height: 700px; width: 1000px }
+
+    .container {
+      position: absolute;
+      right: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: 'Bebas Neue', cursive;;
+    }
+
+    .boxes {
+      min-height: 100%;
+      display: flex;
+      width: 80%;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: row;
+      background: #D1DCA8;
+      margin: 25px;
+    }
+
+    .wrapper {
+      min-height: 100%;
+      display: flex;
+      width: 80%;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      background: #D1DCA8;
+     border: 1px dashed #ccc;
+     margin: 25px;
+    }
+
+    .header, .header1, .header2{
+      margin: 20px 50px;
+      padding: 0 20px;
+      min-height: 75px;
+      background: #71B1D9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5em;
+      text-transform: capitalize;
+      flex-wrap: nowrap;
+    }
+
+    .content {
+      padding-bottom: 50px;
+    }
+
+    .list {
+      background: #fff;
+      border: 2px dotted #444;
+      flex-grow: 2;
+      flex: 0 0 200px;
+      padding: 10px;
+      overflow-wrap: break-word;
+      margin: 25px 50px;
+    }
+
 </style>
 
 </head>
 
 <body>
 
-    <div class="teamName"></div>
-    <div class="aboutUS"></div>
-    <div class="mapTitle"></div>
-    <div id="map"></div>
-    <div class="list"><b>List of Polling Places</b></div>
+    <div class="container">
+      <div class="wrapper">
+        <div class="boxes">
+          <div class="header"><a href="about.html">About</a></div>
+          <div class="header1">Polling Places in Prince George's County</div>
+        </div>
+        <div class="content">
+          <div id="map"></div></div>
+          <div class="listContainer">
+            <div class="header2">List of Polling Places:</div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <script>
 
