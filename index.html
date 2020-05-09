@@ -144,34 +144,43 @@ fetch('https://data.princegeorgescountymd.gov/resource/2v6d-7p4w.json')
 }
 })
 
-
 // Initializing the base map layer 
 // code ref: Lab 7 INST 377 Spring 2020
-var mymap = L.map('map').setView([38.988136,-76.941567], 10);
-
-
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+var layer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
-}).addTo(mymap);
+});
 
+// Initializing the grayscale map layer 
+// code ref: https://leafletjs.com/examples/layers-control/
+var gray = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/light-v9'
+});
 
 // Loading external PG county polygons from GeoJson data to distinguish the county from the rest of the map
 // code ref: https://medium.com/@maptastik/loading-external-geojson-a-nother-way-to-do-it-with-jquery-c72ae3b41c01
 // GeoJson ref: https://data.princegeorgescountymd.gov/Government/Map-Of-Polling-Places-In-Election-Precincts/avc3-7kzn
 var districts = new L.GeoJSON.AJAX("districts.geojson");
 districts.on('data:loaded', function(){
-districts.addTo(mymap);
 });
 
+// Initializing the mapbox
+// code ref: Lab 7 INST 377 Spring 2020
+var mymap = L.map('map', {
+    layers: [layer, districts]
+}).setView([38.988136,-76.941567], 10);
 
 // Loading external PG County polling place GeoJson data for markers, styling the markers and adding relevant information in the popups. 
 // code ref: https://maptimeboston.github.io/leaflet-intro/
 // GeoJson ref: https://data.princegeorgescountymd.gov/Government/Polling-Places/e2wd-vu2n#Download
-$.getJSON("pg.geojson",function(data){
+var places = $.getJSON("pg.geojson",function(data){
     var locationIcon = L.icon({
       // Icon used from webstockreview.net
       iconUrl: 'https://webstockreview.net/images/election-clipart-officer-15.png',
@@ -189,7 +198,6 @@ $.getJSON("pg.geojson",function(data){
     }).addTo(mymap);
   });
 
-
 // Adding a Fullscreen control button
 // code ref: https://github.com/Leaflet/Leaflet.fullscreen
 mymap.addControl(new L.Control.Fullscreen({
@@ -199,10 +207,24 @@ mymap.addControl(new L.Control.Fullscreen({
     }
 }));
 
+// declaring variables for the base and overlay layers
+// code ref: https://leafletjs.com/examples/layers-control/
+var baseMaps = {
+    "Grayscale Map": gray,
+    "Regular Map": layer
+};
+
+var overlayMaps = {
+    "PG County Boundary": districts
+};
+
+// Adding a control to toggle map layers
+// code ref: https://leafletjs.com/examples/layers-control/
+L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+
+
 </script>
 
 </body>
 
 </html>
-
-
