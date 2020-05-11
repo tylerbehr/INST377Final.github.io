@@ -6,8 +6,8 @@ This project is made with the objective of informing Prince George's County resi
 ## Our Target Browsers 
 We aim to accomodate internet-users of all platforms. We expect that the vast majority of our Desktop user-base will be using either Windows or MacOS in their most recent versions, and our Mobile user-base will be using Android or iOS. We aim to be compatible with those platforms and the majority of web-browsers in their most recent versions (Google Chrome, Mozilla Firefox, Apple Safari, Microsoft Edge).
 ## Link to User Manual
-
+[User Manual](/docs/user.md)
 ## Link to Developer Manual
-See Below
+[See Below](#developer-manual)
 # Developer Manual
 
