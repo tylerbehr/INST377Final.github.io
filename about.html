@@ -12,53 +12,36 @@
 
 
   <style>
-
     body {
-      background-color: #91A3D9;
-      font-family: 'Bebas Neue', cursive;
-    }
-    
-    .container {
-      position: absolute;
-      right: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      font-family: 'Bebas Neue', cursive;;
-      margin: 20px 50px;
-    }
+    margin: 0;
+    background-color:  #91A3D9;
+  }
 
-    .boxes {
-      min-height: 100%;
-      display: flex;
-      width: 80%;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: row;
-      background: #71B1D9;
-      margin: 25px;
-    }
-
-    .wrapper {
-      min-height: 100%;
-      display: flex;
-      width: 80%;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: column;
-      background: #71B1D9;
-     border: 1px dashed #ccc;
-     margin: 25px;
-    }
-
-    .header, .header1{
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+  }
+  
+.header { 
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    background-color:#71B1D9;
+    justify-content: space-between;
+  }
+  
+  .header div{
+    align-self: flex-start;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+  }
+  h1{
       margin: 20px 50px;
       padding: 0 20px;
       min-height: 75px;
-      background: #D1DCA8;
+      background-color:#71B1D9;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -66,55 +49,63 @@
       font-size: 1.5em;
       text-transform: capitalize;
       flex-wrap: nowrap;
+      border: 2px solid;
     }
     
-    .header2, .header3 {
-      margin: 20px 50px;
-      padding: 0 20px;
-      min-height: 75px;
-      background: #71B1D9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.5em;
-      text-transform: capitalize;
-      flex-wrap: nowrap;
-      font-family: 'Bebas Neue', cursive;;
-    }
+  nav a {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+    justify-content: flex-end;
+  }
+  
+  nav a:hover {
+    background-color:#D1DCA8;
+    color: black;
+  }
+  
+  nav a.active {
+    color: black;
+    background-color:#91A3D9;
+  }
 
-    .content {
-      padding-bottom: 50px;
-      margin: 20px 50px;
-      background: #D1DCA8;;
-    }
+  
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 200px;
+    border: 10 px black;
+    background-color: #D1DCA8;
+  }
+  
+  .description {
+    flex: 3;
+    border-radius: 11px;
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 17px;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px;
+  }
+  
+  .members {
+    flex: 2;
+    margin-left: 10px;
+    padding: 1%;
+    font-size: 30px;
 
-    .members {
-      min-height: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: column;
-      background: #D1DCA8;
-      border: 1px dashed #ccc;
-    }
+  }
+  .members li{
+    border-radius: 11px;
+    border: 2px solid;
+    padding: 5px;
+    display: flex;
+  }
 
-    .description {
-      min-height: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: column;
-      background: #D1DCA8;
-      border: 1px dashed #ccc;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .indent{
-      text-indent: 30px;
-    }
+  
 
 
   </style>
@@ -122,50 +113,45 @@
 </head>
 
   <body>
-
-    <div class="container">
-      <div class="wrapper">
-        <div class="boxes">
-          <div class="header"><a href="index.html">Back to the Map</a></div>
-          <div class="header1">About</div>
+      <div class="header">
+        <div>Team 1</div>
+        <nav>
+        <a href="index.html">Back to the map</a>
+        <a class= "active">About</a>
+        </nav>
+      </div>
+      <div class="boxes">
+      <h1>About the Project</h1>
+      </div>
+      <div class="container">
+        <div class="members">
+          <ul>
+            <li>Jose Aguirre</li>
+            <li>Tyler Behr</li>
+            <li>Michael Stripling</li>
+            <li>Joshua Parks</li>
+            <li>William Zabet</li>
+          </ul>
         </div>
-        <div class="content">
-          <div class="members">
-            <div class="header2">Team Members</div>
-            <ul>
-              <li>Jose Aguirre</li>
-              <li>Tyler Behr</li>
-              <li>Michael Stripling</li>
-              <li>Joshua Parks</li>
-              <li>William Zabet</li>
-            </ul>
-          </div>
-          <div class="description">
-            <div class="header3">Project Description</div>
-            <div class="writing">
-              <h4>Data Source: <a href="https://data.princegeorgescountymd.gov/Government/Polling-Places/e2wd-vu2n">PG Open Data</a></h4>
-            </br>
-              <h4>Information Problem:</h4>
-              <p class="indent">
-                  The information problem is that the residents of College Park/Prince George’s County may not know about polling places where they can practice their civic right to vote. This could be due to the information not being readily available or difficulty when navigating through the information. Anyone that is eligible to vote should be able to have easy access to information regarding their polling location.
-                There are many groups of stakeholders that care about this problem. One primary stakeholder is the population of College Park/Prince George’s County. As UMD is within Prince George’s County, a substantial portion of the commuter population may be from within the county and is relevant to them. This also includes UMD students of voting age that have changed their permanent address to one that is within Prince George’s County. 
-                Our system would be able to solve this information problem because it will provide an easy way to navigate polling location data along with potentially adding new information
-              </p>
-            </br>
-            <h4>Project:</h4>
-            <p class="indent">
-              Using HTML,CSS, and JS. We used leaflet along with a couple plugins such as AJAX to extract the GeoJSON data and make an aesthetically pleasing map that will allow users to find polling stations in PG County. 
-              We loaded external PG county polygons from GeoJson data to distinguish the county from the rest of the map. We then added the external PG County polling place GeoJson data and added the coordinates as markers on the map. We styled them with an voting box icon  styling the markers and added relevant information in the popups such as the name, the address, and a link that directs the user to google maps with the address already entered. 
-              We then added a functional full screen control button in which the user could toggle on and off. Lastly, we made a list of all 274 current locations. This project serves as a basic solution for having a map and list of all current locations. The map can simply be updated by loading in a GeoJson file with new data. This project acts as a small contribution to the problem. In the future, a sidebar with the full information from the properties of each marker 
-              (ie. District, School District, Legislative District, etc.) could be added with event listeners that update the sidebar when a new marker is clicked on. Additionally, a control with filters could be added that can filter the polygon data, polling stations by city, district, etc. Lastly, in the future we would hope to add a plug in that allows the user to enter their address and return the closest polling station to them. 
-            </p>
-              </article>
-            </div>
+        <div class="description">
+          <h4>Data Source: <a href="https://data.princegeorgescountymd.gov/Government/Polling-Places/e2wd-vu2n">PG Open Data</a></h4>
+        </br>
+          <h4>Information Problem:</h4>
+          <p class="indent">
+              The information problem is that the residents of College Park/Prince George’s County may not know about polling places where they can practice their civic right to vote. This could be due to the information not being readily available or difficulty when navigating through the information. Anyone that is eligible to vote should be able to have easy access to information regarding their polling location.
+            There are many groups of stakeholders that care about this problem. One primary stakeholder is the population of College Park/Prince George’s County. As UMD is within Prince George’s County, a substantial portion of the commuter population may be from within the county and is relevant to them. This also includes UMD students of voting age that have changed their permanent address to one that is within Prince George’s County. 
+            Our system would be able to solve this information problem because it will provide an easy way to navigate polling location data along with potentially adding new information
+          </p>
+        </br>
+        <h4>Project:</h4>
+        <p class="indent">
+          Using HTML,CSS, and JS. We used leaflet along with a couple plugins such as AJAX to extract the GeoJSON data and make an aesthetically pleasing map that will allow users to find polling stations in PG County. 
+          We loaded external PG county polygons from GeoJson data to distinguish the county from the rest of the map. We then added the external PG County polling place GeoJson data and added the coordinates as markers on the map. We styled them with an voting box icon  styling the markers and added relevant information in the popups such as the name, the address, and a link that directs the user to google maps with the address already entered. 
+          We then added a functional full screen control button in which the user could toggle on and off. Lastly, we made a list of all 274 current locations. This project serves as a basic solution for having a map and list of all current locations. The map can simply be updated by loading in a GeoJson file with new data. This project acts as a small contribution to the problem. In the future, a sidebar with the full information from the properties of each marker 
+          (ie. District, School District, Legislative District, etc.) could be added with event listeners that update the sidebar when a new marker is clicked on. Additionally, a control with filters could be added that can filter the polygon data, polling stations by city, district, etc. Lastly, in the future we would hope to add a plug in that allows the user to enter their address and return the closest polling station to them. 
+        </p>
+        </article>
         </div>
       </div>
-    </div>
-    </div>
-
-  </body>
-
-</html>
+    </body>
+  </html>
