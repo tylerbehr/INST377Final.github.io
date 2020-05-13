@@ -14,7 +14,7 @@ Because of our goal of creating an efficient application by minimizing clicks, w
 ### Techincal System Decision Rational
 
 ### Did We Address Our Problem?
-
+Our original problem statement was addressed with our application. The problem looked to address voter turnout was so low. We came to the conclusion that the low voter could be due to a lack of information. We wanted our application to solve that information shortage.  We accomplished this task by giving a user a map of every polling location in PG county and providing with a list that the location’s name. There is even te feature to provide diections to the user through Gogle. We believe these solves the problem of of oters haing enough information about their oclal polling stations.
 ### Challenges Faced and Their Impact
 The main challenge and failure that we have experienced was failing to develop a proper backend and host our application on Heroku. This has a substantial impact on our application as it discredits our application for potential real-world use. Another failure is the potential shift in our information problem. Due to the COVID-19 outbreak, mail-in voting is being discussed as a potential option for voting in future elections. If this shift occcurs, we will find our application may not be in use until the current outbreak is over. Lastly, there are potential issues within certain web browsers regarding the loading speed of our application. There have been instances of slow loading times within Google Chrome that noticeably affect our applications efficiency. This may discourage Google Chrome users from using our application on that platform. There have been no reported slowdowns in other popular web browsers, such as Mozilla Firefox and Apple Safari. 
 ### Future Plans
