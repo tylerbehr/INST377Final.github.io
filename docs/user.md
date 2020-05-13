@@ -1,7 +1,7 @@
 # Polling Location Map of Prince George's County - USER MANUAL
 ## Intro
 Hello and welcome to our web application!
-The purpose of this document is to provide instruction on how to easily navigate our website. Upon clicking [this link] (https://williamzabet.github.io/INST377Final.github.io/index.html) you will be taken directly to our webpage. You will immediately see a map of all the polling stations in Prince George's County. 
+The purpose of this document is to provide instruction on how to easily navigate our website. Upon clicking  [this link](https://williamzabet.github.io/INST377Final.github.io/index.html) you will be taken directly to our webpage. You will immediately see a map of all the polling stations in Prince George's County. 
 
 ## Homepage
 Upon entering the webpage, you will immediately see a map of every polling station in Prince George's County. To learn more about the Project, click the "About" button directly above the map. 
